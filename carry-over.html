@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Sorts accepted qualification questions into what stays with one account, what likely carries, and what to test, then checks the carry-over against a second synthetic account. Synthetic data.">
+  <title>What carries to the next account</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="page-head">
+      <span class="tag">Synthetic data</span>
+      <h1>What carries to the next account</h1>
+      <p class="lede">Takes the qualification questions accepted on the readout and sorts each one: does it belong to this account's own setup, does it likely carry to other suppliers selling into hotels, or does it need a test first? Then it checks the "carries" claim against a second synthetic account instead of assuming it.</p>
+      <p class="result" id="result" aria-live="polite">Sorting the accepted questions...</p>
+      <noscript><p>This page needs JavaScript to sort the questions.</p></noscript>
+      <p class="source-line" id="source-line"></p>
+      <nav class="page-nav" aria-label="On this page">
+        <a href="index.html">Back to the readout</a>
+        <a href="#sorted">Sorted</a>
+        <a href="#check">Second-account check</a>
+        <a href="#learn">Open questions</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="sorted" aria-labelledby="sorted-title">
+        <div class="section-head">
+          <h2 id="sorted-title">Sorted into three groups</h2>
+          <p>Each question gets one group and a one-line reason. Groups shown here are after the second-account check.</p>
+        </div>
+        <div class="carry-grid" id="carry-grid"></div>
+        <p class="rule-line" id="split-note"></p>
+      </section>
+
+      <section id="check" aria-labelledby="check-title">
+        <div class="section-head">
+          <h2 id="check-title">Checked against a second account</h2>
+          <p id="check-intro"></p>
+        </div>
+        <div class="card table-wrap">
+          <table id="check-table">
+            <caption class="visually-hidden">Turn-down rate on each account for every sorted question</caption>
+          </table>
+        </div>
+        <p class="rule-line" id="check-rule"></p>
+      </section>
+
+      <section id="learn" aria-labelledby="learn-title">
+        <div class="section-head">
+          <h2 id="learn-title">What I'd want to learn from you</h2>
+        </div>
+        <div class="card" style="padding:14px 18px">
+          <ol class="plain-list questions-list">
+            <li>When something works in one account, how does it get into the product today?</li>
+            <li>Do you keep what works per industry or per customer?</li>
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>Built by Dakshit Raj with Claude Code and Codex. Synthetic data.</p>
+      <p><a href="https://github.com/Duckky153/lead-feedback-readout">Source on GitHub</a></p>
+    </footer>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="readout.mjs"></script>
+  <script src="carry.js"></script>
+</body>
+</html>

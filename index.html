@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Reads two weeks of what four sales reps did with their suggested leads and turns it into a short readout: patterns, team rules versus one rep's taste, and draft qualification questions. Synthetic data.">
+  <title>Lead Feedback Readout</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="page-head">
+      <span class="tag">Synthetic data</span>
+      <h1>Lead Feedback Readout</h1>
+      <p class="lede">One made-up account: a regional supplier of commercial laundry equipment that sells to hotels, care homes, gyms and laundromats. Four reps (A to D) each worked a feed of 40 suggested leads for two weeks. This page reads what the reps did with those leads, not what anyone said on a call, and turns it into a short readout for the person setting up the account.</p>
+      <p class="result" id="result" aria-live="polite">Reading two weeks of rep activity...</p>
+      <noscript><p>This page needs JavaScript to read the rep activity.</p></noscript>
+
+      <div class="stats" id="stats"></div>
+
+      <dl class="defs">
+        <div><dt>Turned down:</dt> <dd>thumbs down or "not interested".</dd></div>
+        <div><dt>Accepted:</dt> <dd>liked, contacted or meeting booked.</dd></div>
+        <div><dt>Left alone:</dt> <dd>viewed 2 or more times with no action.</dd></div>
+      </dl>
+
+      <nav class="page-nav" aria-label="On this page">
+        <a href="#patterns">Patterns</a>
+        <a href="#team">Team rule or taste</a>
+        <a href="#left-alone">Left alone</a>
+        <a href="#questions">Draft questions</a>
+        <a href="#assumptions">Assumptions</a>
+        <a href="#learn">Open questions</a>
+        <span class="next"><a href="carry-over.html">Next account</a></span>
+      </nav>
+    </header>
+
+    <main>
+      <section id="patterns" aria-labelledby="patterns-title">
+        <div class="section-head">
+          <h2 id="patterns-title">Patterns</h2>
+          <p id="patterns-intro">Every attribute value with enough leads is compared with the account's overall turn-down rate. Only the ones well above it are listed. Open a row to see its leads.</p>
+        </div>
+        <div class="card table-wrap">
+          <table id="pattern-table">
+            <caption class="visually-hidden">Flagged patterns and their turn-down numbers</caption>
+          </table>
+        </div>
+        <p class="rule-line" id="pattern-rule"></p>
+        <details class="all-values">
+          <summary id="all-values-summary">Every value checked</summary>
+          <div class="card table-wrap">
+            <table id="all-values-table">
+              <caption class="visually-hidden">Every attribute value and why it was or wasn't flagged</caption>
+            </table>
+          </div>
+        </details>
+      </section>
+
+      <section id="team" aria-labelledby="team-title">
+        <div class="section-head">
+          <h2 id="team-title">Team rule or one rep's taste</h2>
+          <p>A pattern only counts as a rule if the whole team behaves the same way. If one rep keeps working leads the others reject, that rep may know something, so it becomes a question for the customer's sales lead instead.</p>
+        </div>
+        <div class="team-grid" id="team-grid"></div>
+      </section>
+
+      <section id="left-alone" aria-labelledby="left-title">
+        <div class="section-head">
+          <h2 id="left-title">Left alone</h2>
+        </div>
+        <p class="callout" id="left-callout"></p>
+        <div class="card table-wrap">
+          <table id="left-table">
+            <caption class="visually-hidden">Left-alone leads grouped by attribute value</caption>
+          </table>
+        </div>
+        <p class="rule-line" id="left-rule"></p>
+        <details class="all-values">
+          <summary id="left-leads-summary">The left-alone leads</summary>
+          <div class="card table-wrap">
+            <table id="left-leads-table">
+              <caption class="visually-hidden">Every left-alone lead</caption>
+            </table>
+          </div>
+        </details>
+      </section>
+
+      <section id="questions" aria-labelledby="questions-title">
+        <div class="section-head">
+          <h2 id="questions-title">Draft qualification questions</h2>
+          <p id="questions-intro">One yes/no question per whole-team pattern, at most five, with the evidence under each. A person accepts or rejects every one. Nothing here re-ranks leads.</p>
+        </div>
+        <div class="q-list" id="q-list"></div>
+
+        <div class="card notes-box">
+          <header>
+            <h3 id="notes-title">Account notes</h3>
+            <div class="q-actions" style="margin-top:0">
+              <span class="copy-status" id="copy-status" aria-live="polite"></span>
+              <button type="button" class="btn primary" id="copy-btn">Copy</button>
+            </div>
+          </header>
+          <textarea id="notes" readonly aria-labelledby="notes-title" spellcheck="false"></textarea>
+          <p class="small muted" id="storage-note"></p>
+        </div>
+      </section>
+
+      <section id="assumptions" aria-labelledby="assumptions-title">
+        <div class="section-head">
+          <h2 id="assumptions-title">Assumptions</h2>
+        </div>
+        <div class="card" style="padding:14px 18px">
+          <ul class="plain-list" id="assumption-list"></ul>
+          <div class="keyword-map" id="keyword-map"></div>
+        </div>
+      </section>
+
+      <section id="learn" aria-labelledby="learn-title">
+        <div class="section-head">
+          <h2 id="learn-title">What I'd want to learn from you</h2>
+        </div>
+        <div class="card" style="padding:14px 18px">
+          <ol class="plain-list questions-list">
+            <li>When a rep turns a lead down, does that change what the whole team sees, or only that rep?</li>
+            <li>When reps disagree on a segment, who settles it: the customer's head of sales or the data?</li>
+            <li>Do you treat a lead that was viewed and left alone as a signal?</li>
+            <li>How many qualification questions does an account usually keep after its first month?</li>
+            <li>How often do reps leave a note when they turn a lead down?</li>
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>Built by Dakshit Raj with Claude Code and Codex. Synthetic data.</p>
+      <p><a href="https://github.com/Duckky153/lead-feedback-readout">Source on GitHub</a></p>
+    </footer>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="readout.mjs"></script>
+  <script src="app.js"></script>
+</body>
+</html>
